@@ -1,4 +1,4 @@
-package com.example.stockmanagerupdate.database
+package com.example.stockmanagerupdate.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -11,5 +11,12 @@ data class TransactionsEntity(
     val date : String,
     val amount : Int,
     val customerID : Int,
-    val products : String
 )
+
+data class TransactionsEntityMinimal(
+    val transId : Int = 0,
+    val orderType : String = "Supply",
+    val date : String,
+    val amount : Int,
+)
+

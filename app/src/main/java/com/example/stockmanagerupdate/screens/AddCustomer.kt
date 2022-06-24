@@ -11,10 +11,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.stockmanagerupdate.components.AddCustomerButton
-import com.example.stockmanagerupdate.components.AddOrderButton
 import com.example.stockmanagerupdate.components.CustomEditText
-import com.example.stockmanagerupdate.database.CustomerTable
-import com.example.stockmanagerupdate.database.TransactionsEntity
+import com.example.stockmanagerupdate.database.entities.CustomerTable
 import com.example.stockmanagerupdate.database.orderViewModel
 import com.example.stockmanagerupdate.navigation.Screen
 import com.example.stockmanagerupdate.ui.theme.oswald

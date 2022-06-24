@@ -21,7 +21,6 @@ import androidx.navigation.NavController
 import com.example.stockmanagerupdate.components.CustomerCard
 import com.example.stockmanagerupdate.components.DrawerIcon
 import com.example.stockmanagerupdate.components.NavDrawer
-import com.example.stockmanagerupdate.components.transactionCard
 import com.example.stockmanagerupdate.database.orderViewModel
 import com.example.stockmanagerupdate.navigation.Screen
 import com.example.stockmanagerupdate.ui.theme.oswald
@@ -31,7 +30,7 @@ import kotlinx.coroutines.launch
 fun Customers(viewModel: orderViewModel, navController : NavController){
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
-    val allCustomers by viewModel.allCustomers.observeAsState(listOf())
+    val allCustomersHome by viewModel.allCustomersHome.observeAsState(listOf())
 
 
 
@@ -80,7 +79,7 @@ fun Customers(viewModel: orderViewModel, navController : NavController){
                 }
                 Spacer(modifier = Modifier.height(30.dp))
                 LazyColumn() {
-                    this.items(allCustomers) { customer ->
+                    this.items(allCustomersHome) { customer ->
                         CustomerCard(
                             id = customer.customerID,
                             name = customer.name,

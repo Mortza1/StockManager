@@ -2,11 +2,9 @@ package com.example.stockmanagerupdate.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.example.stockmanagerupdate.database.orderViewModel
 import com.example.stockmanagerupdate.screens.*
 
@@ -26,7 +24,7 @@ fun Navigation() {
         }
         composable(Screen.AddOrder.route) {
             val viewModel: orderViewModel = hiltViewModel()
-            addOrder(viewModel, navController)
+            AddOrder(viewModel, navController)
         }
         composable(Screen.AddCustomer.route) {
             val viewModel: orderViewModel = hiltViewModel()

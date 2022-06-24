@@ -82,13 +82,16 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.40.5"
     kapt "com.google.dagger:hilt-compiler:2.40.5"
     implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+    def moxy_version = "2.2.2"
+    implementation "com.github.moxy-community:moxy-androidx:$moxy_version"
+    implementation "com.github.moxy-community:moxy-ktx:$moxy_version"
+    kapt "com.github.moxy-community:moxy-compiler:$moxy_version"
 
 
     implementation 'androidx.compose.runtime:runtime-livedata:1.2.0-rc01'
 
     //reveal Swipe
     implementation 'de.charlex.compose:revealswipe:1.0.0'
-
 
 
 }
