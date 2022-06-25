@@ -25,12 +25,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
-import com.example.stockmanagerupdate.database.orderViewModel
+import com.example.stockmanagerupdate.database.OrderViewModel
+import com.example.stockmanagerupdate.database.entities.ProductsChange
 import com.example.stockmanagerupdate.ui.theme.oswald
+import kotlinx.coroutines.launch
 
 @Composable
 fun productChangeBox(
-    viewModel: orderViewModel
+    viewModel: OrderViewModel
 ) {
 
     //necessary Initializations
@@ -40,6 +42,9 @@ fun productChangeBox(
     var quantity by rememberSaveable { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     var nameSize by remember { mutableStateOf(Size.Zero) }
+    val scope = rememberCoroutineScope()
+    val productID by viewModel.findProdID(selectedProduct).observeAsState(0)
+    val allTransID by viewModel.allTransID.observeAsState(listOf())
 
 
     //for the drop down menu box
@@ -133,7 +138,19 @@ fun productChangeBox(
                     imeAction = ImeAction.Done
                 )
             )
-            Button(onClick = {  },
+            Button(onClick = {
+                if(selectedProduct.isNotBlank() && price.isNotBlank() && quantity.isNotBlank()){
+                             scope.launch {
+                                 viewModel.insertProductChange(
+                                     ProductsChange(
+                                         productID = productID,
+                                         transID = allTransID[0]+1,
+                                         price = price.toInt(),
+                                         quantity = quantity.toInt()
+                                     )
+                                 )
+                             }}
+            },
                 Modifier
                     .padding(5.dp)
                     .fillMaxWidth()

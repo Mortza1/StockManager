@@ -27,6 +27,10 @@ interface OrderDao {
     @Query("DELETE FROM TransactionsEntity WHERE transId = :userId")
     fun deleteByTransId(userId: Int)
 
+    @Transaction
+    @Query("select transId from transactionsentity order by transId DESC")
+    fun getTransID() : Flow<List<Int>>
+
 
 
 
@@ -60,7 +64,9 @@ interface OrderDao {
     @Query("SELECT * FROM ProductsChange where productID = :productID")
     fun productChangeDetails(productID: Int): Flow<ProductsChange>
 
-
+    @Transaction
+    @Query("select productID from ProductsTable where name = :name")
+    fun findProdID(name : String) : Flow<Int>
 
 
 

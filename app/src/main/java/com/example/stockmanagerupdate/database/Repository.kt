@@ -16,6 +16,7 @@ class Repository @Inject constructor(private val orderDao: OrderDao) {
     val allProducts: Flow<List<ProductsTable>> = orderDao.homePageProducts()
     val customerNames: Flow<List<String>> = orderDao.customerNames()
     val productNames: Flow<List<String>> = orderDao.productNames()
+    val allTransId: Flow<List<Int>> = orderDao.getTransID()
 
 
     // all functions for transactions
@@ -57,6 +58,9 @@ class Repository @Inject constructor(private val orderDao: OrderDao) {
     //}
     fun productChangeDetails(id: Int): Flow<ProductsChange> {
         return orderDao.productChangeDetails(id)
+    }
+    fun findProdID(name : String) : Flow<Int> {
+        return orderDao.findProdID(name)
     }
 
 

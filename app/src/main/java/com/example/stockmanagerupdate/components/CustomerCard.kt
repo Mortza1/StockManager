@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.stockmanagerupdate.database.orderViewModel
+import com.example.stockmanagerupdate.database.OrderViewModel
 import com.example.stockmanagerupdate.navigation.Screen
 import com.example.stockmanagerupdate.ui.theme.oswald
 import de.charlex.compose.RevealDirection
@@ -31,7 +31,7 @@ fun CustomerCard(
     id: Int,
     name : String,
     navController: NavController,
-    viewModel: orderViewModel
+    viewModel: OrderViewModel
 ) {
     val scope = rememberCoroutineScope()
     RevealSwipe(

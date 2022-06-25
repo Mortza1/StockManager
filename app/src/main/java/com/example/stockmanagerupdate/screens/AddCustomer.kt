@@ -13,13 +13,13 @@ import androidx.navigation.NavController
 import com.example.stockmanagerupdate.components.AddCustomerButton
 import com.example.stockmanagerupdate.components.CustomEditText
 import com.example.stockmanagerupdate.database.entities.CustomerTable
-import com.example.stockmanagerupdate.database.orderViewModel
+import com.example.stockmanagerupdate.database.OrderViewModel
 import com.example.stockmanagerupdate.navigation.Screen
 import com.example.stockmanagerupdate.ui.theme.oswald
 import kotlinx.coroutines.launch
 
 @Composable
-fun addCustomer(viewModel: orderViewModel, navController: NavController) {
+fun addCustomer(viewModel: OrderViewModel, navController: NavController) {
     var name by rememberSaveable { mutableStateOf("") }
     var phone by rememberSaveable { mutableStateOf("") }
     var address by rememberSaveable { mutableStateOf("") }

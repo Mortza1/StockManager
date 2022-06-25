@@ -5,7 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.stockmanagerupdate.database.orderViewModel
+import com.example.stockmanagerupdate.database.OrderViewModel
 import com.example.stockmanagerupdate.screens.*
 
 
@@ -19,33 +19,33 @@ fun Navigation() {
         startDestination = Screen.HomePage.route
     ) {
         composable(Screen.HomePage.route) {
-            val viewModel: orderViewModel = hiltViewModel()
+            val viewModel: OrderViewModel = hiltViewModel()
             Homepage(viewModel, navController)
         }
         composable(Screen.AddOrder.route) {
-            val viewModel: orderViewModel = hiltViewModel()
+            val viewModel: OrderViewModel = hiltViewModel()
             AddOrder(viewModel, navController)
         }
         composable(Screen.AddCustomer.route) {
-            val viewModel: orderViewModel = hiltViewModel()
+            val viewModel: OrderViewModel = hiltViewModel()
             addCustomer(viewModel, navController)
         }
         composable(
             "${Screen.OrderDetail.route}/{orderID}"
            )
          {
-             val viewModel: orderViewModel = hiltViewModel()
+             val viewModel: OrderViewModel = hiltViewModel()
             OrderDetails(it.arguments?.getString("orderID"), viewModel)
         }
         composable(Screen.CustomerPage.route){
-            val viewModel: orderViewModel = hiltViewModel()
+            val viewModel: OrderViewModel = hiltViewModel()
             Customers(viewModel = viewModel, navController = navController)
         }
         composable(
             "${Screen.CustomerDetail.route}/{customerID}"
         )
         {
-            val viewModel: orderViewModel = hiltViewModel()
+            val viewModel: OrderViewModel = hiltViewModel()
             CustomerDetails(it.arguments?.getString("customerID"), viewModel)
         }
     }

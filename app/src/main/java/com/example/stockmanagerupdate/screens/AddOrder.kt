@@ -27,13 +27,13 @@ import com.example.stockmanagerupdate.components.AddOrderButton
 import com.example.stockmanagerupdate.components.CustomEditText
 import com.example.stockmanagerupdate.components.productChangeBox
 import com.example.stockmanagerupdate.database.entities.TransactionsEntity
-import com.example.stockmanagerupdate.database.orderViewModel
+import com.example.stockmanagerupdate.database.OrderViewModel
 import com.example.stockmanagerupdate.navigation.Screen
 import com.example.stockmanagerupdate.ui.theme.oswald
 import kotlinx.coroutines.launch
 
 @Composable
-fun AddOrder(viewModel: orderViewModel, navController: NavController) {
+fun AddOrder(viewModel: OrderViewModel, navController: NavController) {
 
     //all the initializations required by this composable only
 
@@ -112,7 +112,7 @@ fun AddOrder(viewModel: orderViewModel, navController: NavController) {
                 }
             }
 
-
+            productChangeBox(viewModel = viewModel)
 
 
             OutlinedTextField(

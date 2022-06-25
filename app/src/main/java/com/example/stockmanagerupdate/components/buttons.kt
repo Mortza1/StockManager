@@ -2,6 +2,7 @@ package com.example.stockmanagerupdate.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -17,7 +18,7 @@ import com.example.stockmanagerupdate.ui.theme.oswald
 @Composable
 fun AddOrderButton(onButtonClick : () -> Unit){
     Button(onClick = onButtonClick,
-        Modifier.fillMaxWidth()
+        Modifier.fillMaxWidth().padding(10.dp)
             .shadow(elevation = 3.dp, shape = RoundedCornerShape(20.dp))
             .height(75.dp)) {
         Text(text = "Add Transaction",

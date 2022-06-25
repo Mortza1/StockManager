@@ -21,13 +21,13 @@ import androidx.navigation.NavController
 import com.example.stockmanagerupdate.components.CustomerCard
 import com.example.stockmanagerupdate.components.DrawerIcon
 import com.example.stockmanagerupdate.components.NavDrawer
-import com.example.stockmanagerupdate.database.orderViewModel
+import com.example.stockmanagerupdate.database.OrderViewModel
 import com.example.stockmanagerupdate.navigation.Screen
 import com.example.stockmanagerupdate.ui.theme.oswald
 import kotlinx.coroutines.launch
 
 @Composable
-fun Customers(viewModel: orderViewModel, navController : NavController){
+fun Customers(viewModel: OrderViewModel, navController : NavController){
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
     val allCustomersHome by viewModel.allCustomersHome.observeAsState(listOf())
