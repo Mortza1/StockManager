@@ -21,6 +21,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun addCustomer(viewModel: orderViewModel, navController: NavController) {
     var name by rememberSaveable { mutableStateOf("") }
+    var phone by rememberSaveable { mutableStateOf("") }
+    var address by rememberSaveable { mutableStateOf("") }
     val scope = rememberCoroutineScope()
 
     Box(Modifier.fillMaxSize()) {
@@ -48,6 +50,8 @@ fun addCustomer(viewModel: orderViewModel, navController: NavController) {
                     viewModel.insertCustomer(
                         CustomerTable(
                             name = name,
+                            phone = phone.toInt(),
+                            address = address
                         )
                     )
                     scope.launch {

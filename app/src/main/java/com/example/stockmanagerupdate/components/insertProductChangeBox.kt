@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -18,6 +19,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,23 +30,26 @@ import com.example.stockmanagerupdate.ui.theme.oswald
 
 @Composable
 fun productChangeBox(
-    transID: Int,
-    price: Int,
-    quantity: Int,
-    onTransIDchange: (String) -> Unit,
-    onPriceChange: (String) -> Unit,
-    onQuantityChange: (String) -> Unit,
     viewModel: orderViewModel
 ) {
+
+    //necessary Initializations
     val productNames by viewModel.productNames.observeAsState(listOf())
     var selectedProduct by rememberSaveable { mutableStateOf("") }
+    var price by rememberSaveable { mutableStateOf("") }
+    var quantity by rememberSaveable { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     var nameSize by remember { mutableStateOf(Size.Zero) }
 
+
+    //for the drop down menu box
     val icon = if (expanded)
         Icons.Filled.KeyboardArrowUp
     else
         Icons.Filled.KeyboardArrowDown
+
+
+
 
     Box(
         modifier = Modifier
@@ -59,6 +65,9 @@ fun productChangeBox(
                 fontFamily = oswald,
                 fontSize = 20.sp
             )
+
+
+            //start of drop down menu edittext
             OutlinedTextField(
                 value = selectedProduct,
                 onValueChange = { selectedProduct = it },
@@ -93,13 +102,44 @@ fun productChangeBox(
                     }
                 }
             }
-           /* OutlinedTextField(value = price.toString(), onValueChange = onPriceChange,
+
+
+            // price Edittext
+            OutlinedTextField(
+                value = price, onValueChange = { price = it },
                 Modifier
                     .padding(5.dp)
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(20.dp),
                 maxLines = 1,
-            label = )*/
+                label = { Text(text = "Enter the price") },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                )
+            )
+
+            //quantity edittext
+            OutlinedTextField(
+                value = quantity, onValueChange = { quantity = it },
+                Modifier
+                    .padding(5.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(20.dp),
+                maxLines = 1,
+                label = { Text(text = "Enter quantity") },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done
+                )
+            )
+            Button(onClick = {  },
+                Modifier
+                    .padding(5.dp)
+                    .fillMaxWidth()
+                    .height(35.dp)) {
+                Text(text = "Save Product Data")
+            }
 
         }
     }

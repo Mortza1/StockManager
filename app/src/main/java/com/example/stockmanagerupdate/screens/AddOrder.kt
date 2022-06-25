@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import com.example.stockmanagerupdate.components.AddOrderButton
 import com.example.stockmanagerupdate.components.CustomEditText
+import com.example.stockmanagerupdate.components.productChangeBox
 import com.example.stockmanagerupdate.database.entities.TransactionsEntity
 import com.example.stockmanagerupdate.database.orderViewModel
 import com.example.stockmanagerupdate.navigation.Screen
@@ -47,6 +48,8 @@ fun AddOrder(viewModel: orderViewModel, navController: NavController) {
     var customerID by rememberSaveable { mutableStateOf("") }
     var productID by rememberSaveable { mutableStateOf("") }
     val scope = rememberCoroutineScope()
+
+
 
     // icon variable is used for the drop down menu
 
@@ -72,6 +75,9 @@ fun AddOrder(viewModel: orderViewModel, navController: NavController) {
             )
             Spacer(modifier = Modifier.size(30.dp))
 
+
+
+            // radio button box
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -108,13 +114,7 @@ fun AddOrder(viewModel: orderViewModel, navController: NavController) {
 
 
 
-            CustomEditText(
-                value = productID,
-                onValueChange = { productID = it },
-                label = "Enter Product ID",
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Next
-            )
+
             OutlinedTextField(
                 value = selectedCustomer,
                 onValueChange = { selectedCustomer = it },

@@ -50,11 +50,11 @@ class Repository @Inject constructor(private val orderDao: OrderDao) {
             orderDao.insertProduct(product)
         }
     }
-    fun deleteProduct(id: Int) {
-        coroutineScope.launch(Dispatchers.IO) {
-            orderDao.deleteByProductID(id)
-        }
-    }
+    //fun deleteProduct(id: Int) {
+      //  coroutineScope.launch(Dispatchers.IO) {
+        //    orderDao.deleteByProductID(id)
+        //}
+    //}
     fun productChangeDetails(id: Int): Flow<ProductsChange> {
         return orderDao.productChangeDetails(id)
     }

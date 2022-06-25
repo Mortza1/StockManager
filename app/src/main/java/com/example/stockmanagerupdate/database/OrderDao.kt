@@ -40,9 +40,9 @@ interface OrderDao {
     @Insert
     fun insertProduct(product : ProductsTable)
 
-    @Transaction
-    @Query("DELETE FROM ProductsTable WHERE productID = :productID")
-    fun deleteByProductID(productID: Int)
+   // @Transaction
+    //@Query("DELETE FROM ProductsTable WHERE productID = :productID")
+    //fun deleteByProductID(productID: Int)
 
     @Transaction
     @Query("SELECT * FROM ProductsTable ORDER BY productID DESC")
