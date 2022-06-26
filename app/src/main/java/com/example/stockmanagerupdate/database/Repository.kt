@@ -77,4 +77,7 @@ class Repository @Inject constructor(private val orderDao: OrderDao) {
             orderDao.deleteByCustomerId(id)
         }
     }
+    fun findCustomerIdByName(name : String) : Flow<Int>{
+        return orderDao.findCustomerIdByName(name)
+    }
 }

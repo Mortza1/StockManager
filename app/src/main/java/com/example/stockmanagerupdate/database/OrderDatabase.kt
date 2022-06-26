@@ -7,7 +7,7 @@ import com.example.stockmanagerupdate.database.entities.ProductsChange
 import com.example.stockmanagerupdate.database.entities.ProductsTable
 import com.example.stockmanagerupdate.database.entities.TransactionsEntity
 
-@Database(entities = [TransactionsEntity::class, CustomerTable::class, ProductsChange::class, ProductsTable::class], version = 6)
+@Database(entities = [TransactionsEntity::class, CustomerTable::class, ProductsChange::class, ProductsTable::class], version = 7)
 abstract class OrderDatabase : RoomDatabase() {
 
     abstract val orderDao : OrderDao

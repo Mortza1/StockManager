@@ -40,17 +40,31 @@ fun addCustomer(viewModel: OrderViewModel, navController: NavController) {
                 onValueChange = { name = it },
                 label = "name",
                 keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            )
+            CustomEditText(
+                value = phone,
+                onValueChange = { phone = it },
+                label = "Phone Number",
+                keyboardType = KeyboardType.Phone,
+                imeAction = ImeAction.Next
+            )
+            CustomEditText(
+                value = address,
+                onValueChange = { address = it },
+                label = "Address",
+                keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done
             )
 
 
             Spacer(modifier = Modifier.size(100.dp))
             AddCustomerButton {
-                if (name.isNotBlank() ) {
+                if (name.isNotBlank() && phone.isNotBlank() && address.isNotBlank() ) {
                     viewModel.insertCustomer(
                         CustomerTable(
                             name = name,
-                            phone = phone.toInt(),
+                            phone = phone,
                             address = address
                         )
                     )

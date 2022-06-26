@@ -65,10 +65,10 @@ fun productChangeBox(
         Column(Modifier.padding(5.dp)) {
             Text(
                 text = "Enter Product Info.",
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.SemiBold,
+                Modifier.padding(start = 5.dp),
+                fontWeight = FontWeight.Bold,
                 fontFamily = oswald,
-                fontSize = 20.sp
+                fontSize = 25.sp
             )
 
 
@@ -154,7 +154,8 @@ fun productChangeBox(
                 Modifier
                     .padding(5.dp)
                     .fillMaxWidth()
-                    .height(35.dp)) {
+                    .height(50.dp),
+            shape = RoundedCornerShape(30f)) {
                 Text(text = "Save Product Data")
             }
 

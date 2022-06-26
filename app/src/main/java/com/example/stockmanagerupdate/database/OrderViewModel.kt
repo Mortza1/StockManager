@@ -35,6 +35,9 @@ class OrderViewModel @Inject constructor(private val repository: Repository) : V
     fun deleteCustomer(id : Int){
         repository.deleteCustomer(id)
     }
+    fun findCustomerIdByName(name :String) : LiveData<Int>{
+        return repository.findCustomerIdByName(name).asLiveData()
+    }
 
 }
 

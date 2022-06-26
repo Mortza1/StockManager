@@ -1,6 +1,7 @@
 package com.example.stockmanagerupdate.database.entities
 
 
+import android.provider.ContactsContract
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,7 +10,7 @@ data class CustomerTable(
     @PrimaryKey(autoGenerate = true)
     val customerID : Int = 0,
     val name : String,
-    val phone : Int,
+    val phone : String,
     val address : String
 )
 

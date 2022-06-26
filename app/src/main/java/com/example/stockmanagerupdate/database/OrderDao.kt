@@ -88,4 +88,8 @@ interface OrderDao {
     @Transaction
     @Query("DELETE FROM CustomerTable WHERE customerID = :id")
     fun deleteByCustomerId(id: Int)
+
+    @Transaction
+    @Query("select customerID from CustomerTable where name = :name")
+    fun findCustomerIdByName(name : String) : Flow<Int>
 }

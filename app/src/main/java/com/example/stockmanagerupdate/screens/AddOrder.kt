@@ -24,10 +24,12 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import com.example.stockmanagerupdate.components.AddOrderButton
+import com.example.stockmanagerupdate.components.AddProductSign
 import com.example.stockmanagerupdate.components.CustomEditText
 import com.example.stockmanagerupdate.components.productChangeBox
 import com.example.stockmanagerupdate.database.entities.TransactionsEntity
 import com.example.stockmanagerupdate.database.OrderViewModel
+import com.example.stockmanagerupdate.database.entities.ProductsChange
 import com.example.stockmanagerupdate.navigation.Screen
 import com.example.stockmanagerupdate.ui.theme.oswald
 import kotlinx.coroutines.launch
@@ -45,10 +47,10 @@ fun AddOrder(viewModel: OrderViewModel, navController: NavController) {
     var type by rememberSaveable { mutableStateOf("") }
     var date by rememberSaveable { mutableStateOf("") }
     var amount by rememberSaveable { mutableStateOf("") }
-    var customerID by rememberSaveable { mutableStateOf("") }
+    val customerID by viewModel.findCustomerIdByName(selectedCustomer).observeAsState(-1)
     var productID by rememberSaveable { mutableStateOf("") }
     val scope = rememberCoroutineScope()
-
+    var numberOfProducts by remember { mutableStateOf(0) }
 
 
     // icon variable is used for the drop down menu
@@ -74,7 +76,6 @@ fun AddOrder(viewModel: OrderViewModel, navController: NavController) {
                 fontFamily = oswald
             )
             Spacer(modifier = Modifier.size(30.dp))
-
 
 
             // radio button box
@@ -112,7 +113,10 @@ fun AddOrder(viewModel: OrderViewModel, navController: NavController) {
                 }
             }
 
-            productChangeBox(viewModel = viewModel)
+            AddProductSign(onAddClick = { numberOfProducts +=1 }, onSubtractClick = {numberOfProducts -= 1})
+            for (x in 0..numberOfProducts) {
+                productChangeBox(viewModel = viewModel)
+            }
 
 
             OutlinedTextField(
@@ -168,13 +172,13 @@ fun AddOrder(viewModel: OrderViewModel, navController: NavController) {
             )
             Spacer(modifier = Modifier.size(100.dp))
             AddOrderButton {
-                if (date.isNotBlank() && amount.isNotBlank() && customerID.isNotBlank() && productID.isNotBlank() && type.isNotBlank()) {
+                if (date.isNotBlank() && amount.isNotBlank()  && type.isNotBlank() && customerID != -1) {
                     viewModel.insertOrder(
                         TransactionsEntity(
                             orderType = type,
                             date = date,
                             amount = amount.toInt(),
-                            customerID = customerID.toInt()
+                            customerID = customerID
                         )
                     )
                     scope.launch {
